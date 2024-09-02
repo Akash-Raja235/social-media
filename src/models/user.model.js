@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
         lowercase:true,
         trim:true,
     },
-    fullname:{
+    fullName:{
         type:String,
         required:true,
          index:true
@@ -72,7 +72,7 @@ userSchema.methods.generateAccessToken = function(){
  return  jwt.sign(
         {
             _id:this._id,
-            emial:this.email,
+           email:this.email,
             username:this.username,
             fullname:this.fullname
         },

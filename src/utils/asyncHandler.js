@@ -1,13 +1,13 @@
-import { Promise } from "mongoose"
 
  const asyncHandler =(fn)=> async(req, res, next)=>{
 
     try {
-        await fn(req,res,next)
+
+      return  await fn(req,res,next)
     } catch (error) {
         return res.status(error.code || 500).json({
             success:false,
-            message:error.message
+            message:error?.message || error
         })
     }
 }
@@ -15,7 +15,7 @@ import { Promise } from "mongoose"
 
 // const asyncHandler =(fn)=>{
 
-//     (req,res,next)=>{
+//  return   (req,res,next)=>{
 //         Promise.resolve((fn(req, res, next)))
 //         .catch((err)=>next(err))
 //     }
